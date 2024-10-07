@@ -34,4 +34,14 @@ public class Cliente {
 
     @OneToOne
     private Usuario usuario;
+
+
+    public Cliente(String nombre, String paterno, String materno, String telefono, String correo, String direccion) {
+        this.nombre = nombre;
+        this.paterno = paterno;
+        this.materno = materno;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.direccion = direccion;
+    }
 }
