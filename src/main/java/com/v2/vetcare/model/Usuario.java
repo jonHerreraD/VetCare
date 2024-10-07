@@ -17,11 +17,9 @@ public class Usuario {
     private Long id;
     private String usuario;
     private String contrasenia;
-    private String role;
+    private String rol;
 
     @OneToOne
     private Cliente cliente;
-
-
 
 }
