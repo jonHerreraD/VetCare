@@ -1,6 +1,7 @@
 package com.v2.vetcare.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,8 @@ public class Usuario {
     private String rol;
 
     @OneToOne
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    @JsonBackReference
     private Cliente cliente;
 
 }

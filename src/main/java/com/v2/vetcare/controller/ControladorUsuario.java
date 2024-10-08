@@ -4,7 +4,9 @@ import com.v2.vetcare.exceptions.AlreadyExistsException;
 import com.v2.vetcare.exceptions.ResourceNotFoundException;
 import com.v2.vetcare.model.Cliente;
 import com.v2.vetcare.model.Usuario;
+import com.v2.vetcare.request.SolicitudCrearUsuario;
 import com.v2.vetcare.response.ApiResponse;
+import com.v2.vetcare.service.cliente.IServicioCliente;
 import com.v2.vetcare.service.usuario.IServicioUsuario;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 public class ControladorUsuario {
 
     private final IServicioUsuario servicioUsuario;
+    private final IServicioCliente servicioCliente;
 
     @GetMapping("/all")
     public ResponseEntity<ApiResponse> obtenerTodosLosUsuarios(){
@@ -39,9 +42,10 @@ public class ControladorUsuario {
     }
 
     @PostMapping("/crearUsuario")
-    public ResponseEntity<ApiResponse> crearUsuario(@RequestBody Usuario usuario, @RequestBody Cliente cliente){
+    public ResponseEntity<ApiResponse> crearUsuario(@RequestBody SolicitudCrearUsuario solicitud){
         try {
-            Usuario usu = servicioUsuario.crearUsuario(usuario,cliente);
+            Cliente cliente = servicioCliente.obtenerClientePorId(solicitud.getIdCliente());
+            Usuario usu = servicioUsuario.crearUsuario(solicitud.getUsuario(),cliente);
             return ResponseEntity.ok(new ApiResponse("Usuario creado",usu));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));

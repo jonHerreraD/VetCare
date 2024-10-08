@@ -19,7 +19,7 @@ public class ServicioUsuario implements IServicioUsuario{
     @Override
     public Usuario crearUsuario(Usuario usuario, Cliente cliente) {
         return Optional.of(usuario)
-                .filter(u -> !repositorioUsuario.existeUsuario(u.getUsuario()))
+                .filter(u -> !repositorioUsuario.existsByUsuario(u.getUsuario()))
                 .map(u -> {
                     u.setCliente(cliente);
                     return repositorioUsuario.save(u);
@@ -54,5 +54,11 @@ public class ServicioUsuario implements IServicioUsuario{
     @Override
     public List<Usuario> obtenerTodosLosUsuarios() {
         return repositorioUsuario.findAll();
+    }
+
+    @Override
+    public Usuario findByUsernameAndPassword(String username, String pass) {
+        return repositorioUsuario.findByUsernameAndPassword(username,pass)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
     }
 }

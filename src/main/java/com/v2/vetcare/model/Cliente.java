@@ -1,6 +1,7 @@
 package com.v2.vetcare.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,7 +33,8 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cita> citas;
 
-    @OneToOne
+    @OneToOne(mappedBy = "cliente")
+    @JsonManagedReference
     private Usuario usuario;
 
 

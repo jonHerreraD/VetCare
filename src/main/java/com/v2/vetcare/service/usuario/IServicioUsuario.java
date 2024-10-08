@@ -16,4 +16,6 @@ public interface IServicioUsuario {
     Usuario actualizarUsuario(Usuario usuario);
 
     List<Usuario> obtenerTodosLosUsuarios();
+
+    Usuario findByUsernameAndPassword(String username, String pass);
 }
