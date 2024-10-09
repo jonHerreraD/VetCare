@@ -11,18 +11,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Mascota {
+public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String especie;
-    private String raza;
-    private String sexo;
-    private String caracteristicas;
-    private int edad;
-    private float peso;
+    private String name;
+    private String specie;
+    private String breed;
+    private String sex;
+    private String characteristics;
+    private int age;
+    private float weight;
 
     @ManyToOne
-    private Cliente cliente;
+    private Client client;
 }

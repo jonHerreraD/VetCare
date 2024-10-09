@@ -11,18 +11,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Usuario {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String usuario;
-    private String contrasenia;
-    private String rol;
+    private String username;
+    private String password;
+    private String role;
 
     @OneToOne
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
     @JsonBackReference
-    private Cliente cliente;
+    private Client client;
 
 }
