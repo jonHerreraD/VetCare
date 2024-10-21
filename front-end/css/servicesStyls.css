@@ -1,0 +1,37 @@
+
+#body-content{
+    display: flex;
+    flex-direction:column;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+}
+
+
+.btn-group{
+    gap: 20px;
+    
+}
+
+.btn-primary {
+    background-color: black; /* Color de fondo negro */
+    border-color: black; /* Borde negro */
+    
+}
+
+.btn-primary:hover {
+    background-color: #333; /* Un poco más claro para el efecto hover */
+    border-color: #333;
+}
+
+.btn-group .btn {
+    background-color: black; /* Color de fondo negro */
+    border-color: black; /* Borde negro */
+    
+    
+}
+
+
+
