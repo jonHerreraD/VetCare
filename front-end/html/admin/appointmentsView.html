@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/sidebarStyls.css">
+    <link rel="stylesheet" href="../../css/LogInStyls.css">
+    <link rel="stylesheet" href="../../css/servicesStyls.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button id="toggle-btn" type="button">
+                    <i class="lni lni-grid-alt"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#">VETCARE</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pets.html" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>Pets</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-protection"></i>
+                        <span>Clinic History</span>
+                    </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Register</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed " data-bs-toggle="collapse"
+                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                        <i class="lni lni-layout"></i>
+                        <span>Multi level</span>
+                    </a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link collapsed " data-bs-toggle="collapse"
+                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                                Tow Links
+                            </a>
+                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 1</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-popup"></i>
+                        <span>Notifications</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-cog"></i>
+                        <span>Setting</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        <div class="main" id="body-content">
+            <div class="text-center">
+                <h1 class="fs-2">Citas</h1>
+                <h2>Filtrar por:</h2>
+                <div class="btn-group mb-5">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Orden
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Id</a></li>
+                        <li><a class="dropdown-item" href="#">Cliente A-Z</a></li>
+                        <li><a class="dropdown-item" href="#">Mascota A-Z</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+
+                </div>
+                <div class="btn-group mb-5">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Servicio
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Estetica</a></li>
+                    <li><a class="dropdown-item" href="#">Consulta</a></li>
+                    <li><a class="dropdown-item" href="#">Pension</a></li>
+                    <li><a class="dropdown-item" href="#">Eutanasia</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+                </div>
+                <div class="btn-group mb-5">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Dia
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">1</a></li>
+                    <li><a class="dropdown-item" href="#">2</a></li>
+                    <li><a class="dropdown-item" href="#">3</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+                </div>
+                <div class="btn-group mb-5">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Mes
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Enero</a></li>
+                    <li><a class="dropdown-item" href="#">Febrero</a></li>
+                    <li><a class="dropdown-item" href="#">Marzo</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+                </div>
+                <div class="btn-group mb-5">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Año
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">2024</a></li>
+                    <li><a class="dropdown-item" href="#">2023</a></li>
+                    <li><a class="dropdown-item" href="#">2022</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+                </div>
+                <div class="btn-group mb-5">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Estado
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Completado</a></li>
+                    <li><a class="dropdown-item" href="#">No confirmado</a></li>
+                    <li><a class="dropdown-item" href="#">Proximo</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+                </div>
+                
+                <div class="d-flex justify-content-center">
+
+                </div>
+                <table class="table fs-6">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Mascota</th>
+                            <th scope="col">Servicio solicitado</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider mb-3">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>15/10/2024</td>
+                            <td>13:00</td>
+                            <td>Jonathan Herrera Diaz</td>
+                            <td>Ellie</td>
+                            <td>Consulta</td>
+                            <td>Completado</td>
+                            <td>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end button-container">
+                                    <button class="btn btn-info me-md-2 text-light" type="button">Editar</button>
+                                    <button class="btn btn-danger" type="button">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>15/10/2024</td>
+                            <td>13:00</td>
+                            <td>Jonathan Herrera Diaz</td>
+                            <td>Ellie</td>
+                            <td>Consulta</td>
+                            <td>Proxima</td>
+                            <td>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end button-container">
+                                    <button class="btn btn-info me-md-2 text-light" type="button">Editar</button>
+                                    <button class="btn btn-danger" type="button">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>15/10/2024</td>
+                            <td>13:00</td>
+                            <td>Jonathan Herrera Diaz</td>
+                            <td>Ellie</td>
+                            <td>Consulta</td>
+                            <td>No confirmada</td>
+                            <td>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end button-container">
+                                    <button class="btn btn-info me-md-2 text-light" type="button">Editar</button>
+                                    <button class="btn btn-danger" type="button">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="sg-up bttn d-grid gap-2 col-3 mx-auto">
+                    <a href="pets.html"><button id="signUpBttn" type="button" class="btn btn-primary">Registrar
+                            nuevo</button></a>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/sidebarFunction.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

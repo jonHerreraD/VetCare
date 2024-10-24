@@ -33,5 +33,15 @@
     
 }
 
+.button-container button {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Muestra los botones cuando el ratón pasa sobre el contenedor */
+.button-container:hover button {
+    opacity: 1;
+}
+
 
 
