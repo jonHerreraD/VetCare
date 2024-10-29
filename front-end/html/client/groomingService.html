@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio de Estetica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/sidebarStyls.css">
+    <link rel="stylesheet" href="../../css/LogInStyls.css">
+    <link rel="stylesheet" href="../../css/formsStyls.css">
+    <link rel="stylesheet" href="../../css/servicesStyls.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button id="toggle-btn" type="button">
+                    <i class="lni lni-grid-alt"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#">VETCARE</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="#profile.html" class="sidebar-link">
+                        <i class="lni lni-user"></i>
+                        <span>Perfil</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="pets.html" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>Mascotas</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-protection"></i>
+                        <span>Historial Clinico</span>
+                    </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Historial</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#appointments" class="sidebar-link">Citas</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="servicesView.html" class="sidebar-link">
+                      <i class="lni lni-agenda"></i>
+                      <span>Servicios</span>
+                    </a>
+                  </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed " data-bs-toggle="collapse"
+                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                        <i class="lni lni-layout"></i>
+                        <span>Multi level</span>
+                    </a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link collapsed " data-bs-toggle="collapse"
+                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                                Tow Links
+                            </a>
+                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 1</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-popup"></i>
+                        <span>Notifications</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-cog"></i>
+                        <span>Setting</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        <div class="main" id="body-content">
+            <div class="text-center">
+                <h1>Estetica</h1>
+                <h2 class="mb-4">Servicio Solicitado</h2>
+                <div class="btn-group mb-5" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary">Baño</button>
+                    <button type="button" class="btn btn-primary">Estetica</button>
+                    <button type="button" class="btn btn-primary">Cepillado</button>
+                    <button type="button" class="btn btn-primary">Corte de uñas</button>
+                  </div>
+                <h2 class="mb-4">Observaciones</h2>
+                <div class="btn-group mb-5" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary">Heridas</button>
+                    <button type="button" class="btn btn-primary">Ectoparasitos</button>
+                    <button type="button" class="btn btn-primary">Infecciones</button>
+                    <button type="button" class="btn btn-primary">Uñas encarnadas</button>
+                </div>
+                <div class="btn-group mb-5" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary">Ernias</button>
+                    <button type="button" class="btn btn-primary">Sarna</button>
+                    <button type="button" class="btn btn-primary">Tumores</button>
+                    <button type="button" class="btn btn-primary">Verrugas</button>
+                    <button type="button" class="btn btn-primary">Infecciones de piel</button>
+                  </div>
+                  <h2 class="mb-4">Condicion general del pelo</h2>
+                  <div class="btn-group mb-5">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        - - -
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Bueno</a></li>
+                        <li><a class="dropdown-item" href="#">Regular</a></li>
+                        <li><a class="dropdown-item" href="#">Malo</a></li>
+                    </ul>
+
+                </div>
+                <div class="sg-up bttn d-grid gap-2 col-3 mx-auto">
+                    <a href="pets.html"><button id="signUpBttn" type="button"
+                            class="btn btn-primary">Registrar</button></a>
+                </div>
+            </div>
+        </div>      
+    </div>
+    <script src="../../js/sidebarFunction.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
