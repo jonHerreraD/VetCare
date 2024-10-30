@@ -25,4 +25,9 @@ public class User {
     @JsonBackReference
     private Client client;
 
+    @OneToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    @JsonBackReference
+    private Employee employee;
+
 }

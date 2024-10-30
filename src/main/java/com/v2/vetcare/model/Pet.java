@@ -1,5 +1,7 @@
 package com.v2.vetcare.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,4 +27,9 @@ public class Pet {
 
     @ManyToOne
     private Client client;
+
+    @OneToOne
+    @JoinColumn(name = "pet_id", referencedColumnName = "id")
+    @JsonBackReference
+    private ClinicHistory clinicHistory;
 }

@@ -21,8 +21,13 @@ public class Appointment {
     private Long id;
     private LocalDate date;
     private LocalTime hour;
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
+
+    @ManyToOne
+    @JoinColumn(name = "clinicHistory_id")
+    private ClinicHistory clinicHistory;
 }

@@ -28,3 +28,7 @@ h1{
     color: black;
     font-size: 45px;
 }
+
+.input-group-append {
+    cursor: pointer;
+  }
