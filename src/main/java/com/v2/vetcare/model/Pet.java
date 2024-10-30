@@ -32,4 +32,16 @@ public class Pet {
     @JoinColumn(name = "pet_id", referencedColumnName = "id")
     @JsonBackReference
     private ClinicHistory clinicHistory;
+
+    public Pet(String name, String specie, String breed, String sex,
+               String characteristics, int age, float weight, Client client) {
+        this.name = name;
+        this.specie = specie;
+        this.breed = breed;
+        this.sex = sex;
+        this.characteristics = characteristics;
+        this.age = age;
+        this.weight = weight;
+        this.client = client;
+    }
 }

@@ -59,29 +59,7 @@
             <span>Servicios</span>
           </a>
         </li>
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link has-dropdown collapsed " data-bs-toggle="collapse" data-bs-target="#multi"
-            aria-expanded="false" aria-controls="multi">
-            <i class="lni lni-layout"></i>
-            <span>Multi level</span>
-          </a>
-          <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-            <li class="sidebar-item">
-              <a href="#" class="sidebar-link collapsed " data-bs-toggle="collapse" data-bs-target="#multi-two"
-                aria-expanded="false" aria-controls="multi-two">
-                Tow Links
-              </a>
-              <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                <li class="sidebar-item">
-                  <a href="#" class="sidebar-link">Link 1</a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#" class="sidebar-link">Link 2</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
+        
         <li class="sidebar-item">
           <a href="#" class="sidebar-link">
             <i class="lni lni-popup"></i>
@@ -109,23 +87,27 @@
 
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Nombre" aria-label="Username">
+          <input type="text" class="form-control" id="fname" placeholder="Nombre" aria-label="name">
           <span class="input-group-text"></span>
-          <input type="text" class="form-control" placeholder="Sexo" aria-label="Server">
+          <select class="form-select" id="fsex" aria-label="Default select example">
+            <option selected>Sexo</option>
+            <option value="1">Macho</option>
+            <option value="2">Hembra</option>
+          </select>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Especie" aria-label="Username">
+          <input type="text" class="form-control" id="fspecie" placeholder="Especie" aria-label="specie">
           <span class="input-group-text"></span>
-          <input type="text" class="form-control" placeholder="Edad" aria-label="Server">
+          <input type="text" class="form-control" id="fage" placeholder="Edad" aria-label="age">
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Raza" aria-label="Username">
+          <input type="text" class="form-control" id="fbreed" placeholder="Raza" aria-label="breed">
           <span class="input-group-text"></span>
-          <input type="text" class="form-control" placeholder="Peso" aria-label="Server">
+          <input type="text" class="form-control" id="fweight" placeholder="Peso" aria-label="weight">
         </div>
         <div class="input-group mb-5">
           <span class="input-group-text">Caracteristicas Especiales</span>
-          <textarea class="form-control" aria-label="With textarea"></textarea>
+          <textarea class="form-control" id="fcharacteristics" aria-label="With textarea"></textarea>
         </div>
         <div class="sg-up bttn d-grid gap-2 col-3 mx-auto">
           <a href="pets.html"><button id="signUpBttn" type="button" class="btn btn-primary">Registrar</button></a>
