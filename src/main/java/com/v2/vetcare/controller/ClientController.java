@@ -16,7 +16,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v2/clientes")
+@RequestMapping("/api/v2/clients")
 public class ClientController {
 
     private final IClientService clientService;
@@ -28,7 +28,7 @@ public class ClientController {
     }
 
 
-    @GetMapping("/cliente/{id}/clientes")
+    @GetMapping("/client/{id}/clients")
     public ResponseEntity<ApiResponse> getClientById(@PathVariable Long id){
         try {
             Client client = clientService.getClientById(id);
@@ -39,7 +39,7 @@ public class ClientController {
     }
 
     @CrossOrigin("http://localhost:63342/")
-    @PostMapping("/registrar")
+    @PostMapping("/add")
     public  ResponseEntity<ApiResponse> addClient(@RequestBody AddClientRequest request){
         try {
             Client client = clientService.addClient(request);
@@ -49,7 +49,7 @@ public class ClientController {
         }
     }
 
-    @PutMapping("/actualizar")
+    @PutMapping("/update")
     public ResponseEntity<ApiResponse> updateClient(@RequestBody UpdateClientRequest request){
         try {
             Client client = clientService.updateClient(request);
@@ -59,7 +59,7 @@ public class ClientController {
         }
     }
 
-    @DeleteMapping("/eliminar/{clientId}/clientes")
+    @DeleteMapping("/delete/{clientId}/clients")
     public ResponseEntity<ApiResponse> deleteClient(@PathVariable Long clientId){
         try {
             clientService.deleteClient(clientId);

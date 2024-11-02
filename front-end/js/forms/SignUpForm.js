@@ -1,63 +1,72 @@
 let bttn = document.getElementById('signUpBttn');
 
-bttn.addEventListener("click",event =>{
+bttn.addEventListener("click", event => {
     signUp();
 });
 
-let signUp = async ()=>{
-    let clientForm = {};
-    let userForm = {};
+let signUp = async () => {
+    try {
+        let clientForm = {};
+        let vetUserForm = {};
 
-    clientForm.name = document.getElementById('fname').value;
-    clientForm.phoneNumber = document.getElementById('fphoneNumber').value;
-    clientForm.paternal = document.getElementById('fpaternal').value;
-    clientForm.maternal = document.getElementById('fmaternal').value;
-    clientForm.address = document.getElementById('faddress').value;
-    clientForm.email = document.getElementById('femail').value;
-    userForm.user = document.getElementById('fuser').value;
-    userForm.password = document.getElementById('fpassword').value;
-    userForm.role = 'client';
+        clientForm.name = document.getElementById('fname').value;
+        clientForm.phoneNumber = document.getElementById('fphoneNumber').value;
+        clientForm.paternal = document.getElementById('fpaternal').value;
+        clientForm.maternal = document.getElementById('fmaternal').value;
+        clientForm.address = document.getElementById('faddress').value;
+        clientForm.email = document.getElementById('femail').value;
+        vetUserForm.username = document.getElementById('fuser').value;
+        vetUserForm.password = document.getElementById('fpassword').value;
+        vetUserForm.role = 'client';
 
-
-    const clientRequest = await fetch('http://localhost:8080/api/v2/clientes/registrar', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify(clientForm)
-    });
-
-    if (clientRequest.ok) {
-        const clientData = await clientRequest.json();
-        const clientId = clientData.data.id;
-
-        const loadUser = {
-            user: {
-                username: userForm.username,
-                password: userForm.password,
-                role: userForm.role
-            },
-            clientId: clientId
-        };
-
-        console.log(loadUser);
-
-        const userRequest = await fetch('http://localhost:8080/api/v2/usuarios/crearUsuario', {
+        const clientRequest = await fetch('http://localhost:8080/api/v2/clients/add', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(loadUser)
+            body: JSON.stringify(clientForm)
         });
 
-        if (userRequest.ok) {
-            console.log("Usuario creado con éxito");
-        } else {
-            console.error("Error al crear el usuario");
-        }
-    }
+        if (clientRequest.ok) {
+            const clientData = await clientRequest.json();
+            const clientId = clientData.data?.id; // Verificación opcional
 
-}
+            if (!clientId) {
+                throw new Error("ID de cliente no encontrado en la respuesta");
+            }
+
+            const loadUser = {
+                vetUser: {
+                    username: vetUserForm.username,
+                    password: vetUserForm.password,
+                    role: vetUserForm.role
+                },
+                client_id: clientId,
+                employee_id: 2
+            };
+
+            console.log("Cargando usuario:", loadUser);
+
+            const userRequest = await fetch('http://localhost:8080/api/v2/vetUsers/add', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(loadUser)
+            });
+
+            if (userRequest.ok) {
+                console.log("Usuario creado con éxito");
+                window.location.replace("http://localhost:63342/vetcare/front-end/html/LogIn.html?_ijt=92oia6qk4geahg18r4ip2b2upu&_ij_reload=RELOAD_ON_SAVE");
+            } else {
+                console.error("Error al crear el usuario: ", await userRequest.text());
+            }
+        } else {
+            console.error("Error al agregar cliente: ", await clientRequest.text());
+        }
+    } catch (error) {
+        console.error("Error en signUp:", error);
+    }
+};

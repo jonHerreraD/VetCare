@@ -20,7 +20,7 @@ public class PetService implements IPetService{
     @Override
     public Pet createPet(Pet pet, Client client) {
         return Optional.of(pet)
-                .filter(p -> !petRepository.existsForClient(client))
+                .filter(p -> !petRepository.existsByClient(client))
                 .map(p -> {
                     p.setClient(client);
                     return petRepository.save(p);
@@ -58,7 +58,7 @@ public class PetService implements IPetService{
 
     @Override
     public List<Pet> getAllPetsByClient(Client client) {
-        return petRepository.findAllForClient(client);
+        return petRepository.findByClient(client);
     }
 
     @Override

@@ -1,25 +1,25 @@
 class UserSession{
     constructor(){
-        this.UserSession = getUserFromStorage;
+        this.user = this.getVetUserFromStorage();
     }
 
     //gets user from local storage and parses it
-    getUserFromStorage(){
-        const userData = localStorage.getItem('user');
+    getVetUserFromStorage(){
+        const userData = localStorage.getItem('vetUser');
         return userData ? JSON.parse(userData) : null;
     }
 
     //Checks if there's a user logged in
-    isUserLoggedIn(){
+    isVetUserLoggedIn(){
         return this.user !== null;
     }
 
     getUserId(){
-        return this.isUserLoggedIn() ? this.user.id : null;
+        return this.isVetUserLoggedIn() ? this.user.id : null;
     }
 
     getUserName(){
-        return this.isUserLoggedIn() ? this.user.username : null;
+        return this.isVetUserLoggedIn() ? this.user.username : null;
     }
 
 

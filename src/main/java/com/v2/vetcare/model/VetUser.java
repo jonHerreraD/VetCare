@@ -3,6 +3,7 @@ package com.v2.vetcare.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +12,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class User {
+@AllArgsConstructor
+public class VetUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,13 +23,13 @@ public class User {
     private String role;
 
     @OneToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JoinColumn(name = "client_id")
+    @JsonBackReference(value = "clientReference")  // Cambiado el nombre a "clientReference"
     private Client client;
 
     @OneToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JoinColumn(name = "employee_id")
+    @JsonBackReference(value = "employeeReference")  // Cambiado el nombre a "employeeReference"
     private Employee employee;
 
 }

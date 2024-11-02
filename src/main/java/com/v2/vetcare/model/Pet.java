@@ -26,6 +26,7 @@ public class Pet {
     private float weight;
 
     @ManyToOne
+    @JsonBackReference(value = "clientPetReference")
     private Client client;
 
     @OneToOne

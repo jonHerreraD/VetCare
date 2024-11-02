@@ -10,7 +10,7 @@ let logIn = async () => {
         password: document.getElementById('fpassword').value
     };
 
-    const response = await fetch('http://localhost:8080/api/v2/iniciar-sesion/entrar', { // Endpoint corrected to match your Spring Boot controller
+    const response = await fetch('http://localhost:8080/api/v2/login/log', { // Endpoint corrected to match your Spring Boot controller
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -24,7 +24,7 @@ let logIn = async () => {
         console.log(result);
         localStorage.setItem('session', 'active'); // Storing session state in local storage
         // Redirect or update UI to indicate successful login
-        window.location.replace("http://localhost:63342/vetcare/front-end/html/Inicio.html?_ijt=46okb4i0a7bcrhv3jrka2t612j&_ij_reload=RELOAD_ON_SAVE");
+        window.location.replace("http://localhost:63342/vetcare/front-end/html/client/Home.html?_ijt=46okb4i0a7bcrhv3jrka2t612j&_ij_reload=RELOAD_ON_SAVE");
     } else {
         const error = await response.text();
         console.log('Error logging in: ' + error);

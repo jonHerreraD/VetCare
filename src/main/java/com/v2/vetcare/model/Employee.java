@@ -23,7 +23,7 @@ public class Employee {
     private String email;
 
     @OneToOne(mappedBy = "employee")
-    @JsonManagedReference
-    private User user;
+    @JsonManagedReference(value = "employeeReference")
+    private VetUser vetUser;
 
 }

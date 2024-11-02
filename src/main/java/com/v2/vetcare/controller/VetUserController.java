@@ -2,11 +2,11 @@ package com.v2.vetcare.controller;
 
 import com.v2.vetcare.exceptions.ResourceNotFoundException;
 import com.v2.vetcare.model.Client;
-import com.v2.vetcare.model.User;
-import com.v2.vetcare.request.CreateUserRequest;
+import com.v2.vetcare.model.VetUser;
+import com.v2.vetcare.request.CreateVetUserRequest;
 import com.v2.vetcare.response.ApiResponse;
 import com.v2.vetcare.service.cliente.IClientService;
-import com.v2.vetcare.service.usuario.IUserService;
+import com.v2.vetcare.service.usuario.IVetUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,55 +17,55 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v2/users")
-public class UserController {
+@RequestMapping("/api/v2/vetUsers")
+public class VetUserController {
 
-    private final IUserService userService;
+    private final IVetUserService vetUserService;
     private final IClientService clientService;
 
     @GetMapping("/all")
-    public ResponseEntity<ApiResponse> getAllUsers(){
-        List<User> users = userService.getAllUsers();
-        return ResponseEntity.ok(new ApiResponse("EXito", users));
+    public ResponseEntity<ApiResponse> getAllVetUsers(){
+        List<VetUser> vetUsers = vetUserService.getAllVetUsers();
+        return ResponseEntity.ok(new ApiResponse("EXito", vetUsers));
     }
 
 
-    @GetMapping("/usuario/{id}/usuarios")
-    public ResponseEntity<ApiResponse> getUserById(@PathVariable Long id){
+    @GetMapping("/vetUser/{id}/vetUsers")
+    public ResponseEntity<ApiResponse> getVetUserById(@PathVariable Long id){
         try {
-            User user = userService.getUserById(id);
-            return ResponseEntity.ok(new ApiResponse("Exito", user));
+            VetUser vetUser = vetUserService.getVetUserById(id);
+            return ResponseEntity.ok(new ApiResponse("Exito", vetUser));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));
         }
     }
 
     @CrossOrigin("http://localhost:63342/")
-    @PostMapping("/crearUsuario")
-    public ResponseEntity<ApiResponse> createUser(@RequestBody CreateUserRequest request){
+    @PostMapping( value = "/add", consumes = "application/json", produces = "application/json" )
+    public ResponseEntity<ApiResponse> createVetUser(@RequestBody CreateVetUserRequest request){
         try {
             Client client = clientService.getClientById(request.getClient_id());
-            User user = userService.createUser(request.getUser(),client);
-            return ResponseEntity.ok(new ApiResponse("Usuario creado",user));
+            VetUser vetUser = vetUserService.createVetUser(request.getVetUser(),client);
+            return ResponseEntity.ok(new ApiResponse("Usuario creado",vetUser));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));
         }
     }
 
-    @PutMapping("/actualizar")
-    public ResponseEntity<ApiResponse> updateUser(@RequestBody User user){
+    @PutMapping("/update")
+    public ResponseEntity<ApiResponse> updateVetUser(@RequestBody VetUser vetUser){
         try {
-            User usu = userService.updateUser(user);
+            VetUser usu = vetUserService.updateVetUser(vetUser);
             return ResponseEntity.ok(new ApiResponse("Usuario actualizado",usu));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));
         }
     }
 
-    @DeleteMapping("/eliminar")
-    public ResponseEntity<ApiResponse> deleteUser(@RequestBody Long id){
+    @DeleteMapping("/delete")
+    public ResponseEntity<ApiResponse> deleteVetUser(@RequestBody Long id){
         try {
-            userService.deleteUser(id);
+            vetUserService.deleteVetUser(id);
             return  ResponseEntity.ok(new ApiResponse("Usuario Eliminado!", id));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));

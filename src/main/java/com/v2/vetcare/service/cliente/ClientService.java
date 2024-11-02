@@ -21,7 +21,7 @@ public class ClientService implements IClientService {
 
         if(clientRepository.findClientByRequest(request.getEmail(),
                 request.getPhoneNumber(), request.getName(),
-                request.getPaternal(), request.getMaternal()).isPresent()){
+                request.getPaternal(), request.getMaternal(), request.getAddress()).isPresent()){
             throw new AlreadyExistsException("Existent Client");
         }
 

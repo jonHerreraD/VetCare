@@ -28,14 +28,15 @@ public class Client {
     private String address;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "clientPetReference")
     private List<Pet> pets;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Appointment> appointments;
 
     @OneToOne(mappedBy = "client")
-    @JsonManagedReference
-    private User user;
+    @JsonManagedReference(value = "clientReference")
+    private VetUser vetUser;
 
 
     public Client(String name, String paternal, String maternal, String phoneNumber, String email, String address) {
