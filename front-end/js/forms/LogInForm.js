@@ -19,10 +19,20 @@ let logIn = async () => {
         body: JSON.stringify(form) // Send form data as JSON
     });
 
+    const usernameIs = document.getElementById("fuser").value;
+    const getClientData = await  fetch(`http://localhost:8080/api/v2/clients/findByUsername?username=${usernameIs}`,{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+
     if (response.ok) {
         const result = await response.text();
-        console.log(result);
+        const clientData = await getClientData.json();
         localStorage.setItem('session', 'active'); // Storing session state in local storage
+        localStorage.setItem('clientData', JSON.stringify(clientData.data));
         // Redirect or update UI to indicate successful login
         window.location.replace("http://localhost:63342/vetcare/front-end/html/client/Home.html?_ijt=46okb4i0a7bcrhv3jrka2t612j&_ij_reload=RELOAD_ON_SAVE");
     } else {

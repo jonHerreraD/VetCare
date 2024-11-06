@@ -19,4 +19,8 @@ public interface ClientRepository extends JpaRepository<Client,Long> {
                                                    @Param("maternal") String maternal,
                                                    @Param("address") String address);
 
+
+    @Query("select c from Client c where c.vetUser.username = :username")
+    Client findClientByUsername(@Param("username") String username);
+
 }

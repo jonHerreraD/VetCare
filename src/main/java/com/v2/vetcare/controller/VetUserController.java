@@ -41,6 +41,17 @@ public class VetUserController {
     }
 
     @CrossOrigin("http://localhost:63342/")
+    @GetMapping("/vetUser/{username}/client")
+    public ResponseEntity<ApiResponse> getClientIdByUsername(@PathVariable String username){
+        try {
+            Long client_id = vetUserService.getClientIdByUsername(username);
+            return ResponseEntity.ok(new ApiResponse("Exito", client_id));
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));
+        }
+    }
+
+    @CrossOrigin("http://localhost:63342/")
     @PostMapping( value = "/add", consumes = "application/json", produces = "application/json" )
     public ResponseEntity<ApiResponse> createVetUser(@RequestBody CreateVetUserRequest request){
         try {
@@ -71,4 +82,6 @@ public class VetUserController {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));
         }
     }
+
+
 }

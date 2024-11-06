@@ -17,4 +17,7 @@ public interface IVetUserService {
     List<VetUser> getAllVetUsers();
 
     VetUser findVetUserByUsernameAndPassword(String username, String password);
+    Long getClientIdByUsername(String username);
+
+
 }

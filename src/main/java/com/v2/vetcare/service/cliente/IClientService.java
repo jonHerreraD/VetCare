@@ -7,6 +7,7 @@ import com.v2.vetcare.request.AddClientRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface IClientService {
@@ -30,5 +31,7 @@ public interface IClientService {
     Client getClientByPetName(String petName);
 
     Client getClientByAppointment(Long appointment_id);
+
+    Client findClientByUsername(String username);
 
 }

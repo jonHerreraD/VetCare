@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -35,6 +36,17 @@ public class ClientController {
             return ResponseEntity.ok(new ApiResponse("Exito!",client));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));
+        }
+    }
+
+    @CrossOrigin("http://localhost:63342/")
+    @GetMapping("/findByUsername")
+    public ResponseEntity<ApiResponse> findClientByUsername(@RequestParam String username){
+        try {
+            Client client = clientService.findClientByUsername(username);
+            return  ResponseEntity.ok(new ApiResponse("Cliente Encontrado!", client));
+        }catch (ResourceNotFoundException e){
+            return  ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));
         }
     }
 

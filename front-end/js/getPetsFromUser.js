@@ -1,9 +1,12 @@
-const userSession = new UserSession();
-const userId = userSession.getUserId();
+//import UserSession from '/userSession';
 
+const userSession = new UserSession();
+console.log(userSession);
+
+const clientId = userSession.getClientId();
 let petList = async () => {
     try {
-        const request = await fetch(`http://localhost:8080/api/v2/pets/client/${userId}/pets`, {
+        const request = await fetch(`http://localhost:8080/api/v2/pets/client/${clientId}/pets`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -16,7 +19,7 @@ let petList = async () => {
         }
 
         const pets = await request.json();
-        renderPets(pets);
+        renderPets(pets.data || []);
     } catch (error) {
         console.error('Hubo un problema con la solicitud:', error);
     }
@@ -26,6 +29,10 @@ let renderPets = (pets) => {
     let cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar tarjetas
 
+    if(pets.length === 0){
+        cardContainer.innerHTML = '<p>No hay mascotas registradas.</p>';
+        return;
+    }
     pets.forEach(pet => {
         let HTMLCard = `
             <div class="card mb-3" style="width: 50rem; margin-bottom: 20px;">

@@ -4,18 +4,21 @@ import com.v2.vetcare.exceptions.AlreadyExistsException;
 import com.v2.vetcare.exceptions.ResourceNotFoundException;
 import com.v2.vetcare.model.Client;
 import com.v2.vetcare.repository.ClientRepository;
+import com.v2.vetcare.repository.VetUserRepository;
 import com.v2.vetcare.request.UpdateClientRequest;
 import com.v2.vetcare.request.AddClientRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class ClientService implements IClientService {
 
     private final ClientRepository clientRepository;
+    private final VetUserRepository vetUserRepository;
     @Override
     public Client addClient(AddClientRequest request) {
 
@@ -109,5 +112,10 @@ public class ClientService implements IClientService {
     @Override
     public Client getClientByAppointment(Long appointmentId) {
         return null;
+    }
+
+    @Override
+    public Client findClientByUsername(String username) {
+        return clientRepository.findClientByUsername(username);
     }
 }

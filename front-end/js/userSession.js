@@ -1,26 +1,30 @@
-class UserSession{
-    constructor(){
-        this.user = this.getVetUserFromStorage();
+class UserSession {
+    constructor() {
+        this.clientData = this.getClientFromStorage();
     }
 
-    //gets user from local storage and parses it
-    getVetUserFromStorage(){
-        const userData = localStorage.getItem('vetUser');
-        return userData ? JSON.parse(userData) : null;
+    // Obtiene los datos del cliente de localStorage y los parsea
+    getClientFromStorage() {
+        const clientData = localStorage.getItem('clientData');
+        return clientData ? JSON.parse(clientData) : null;
     }
 
-    //Checks if there's a user logged in
-    isVetUserLoggedIn(){
-        return this.user !== null;
+    // Verifica si hay un cliente logueado
+    isClientLoggedIn() {
+        return this.clientData !== null;
     }
 
-    getUserId(){
-        return this.isVetUserLoggedIn() ? this.user.id : null;
+    // Obtiene el ID del cliente
+    getClientId() {
+        return this.isClientLoggedIn() ? this.clientData.id : null;
+    }
+    
+    getClientName(){
+        return this.isClientLoggedIn() ? this.clientData.name : null;
     }
 
-    getUserName(){
-        return this.isVetUserLoggedIn() ? this.user.username : null;
+    // Obtiene el nombre de usuario del cliente
+    getUserName() {
+        return this.isClientLoggedIn() ? this.clientData.vetUser.username : null;
     }
-
-
 }

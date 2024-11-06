@@ -61,5 +61,10 @@ public class VetUserService implements IVetUserService {
         return vetUserRepository.findVetUserByUsernameAndPassword(username,password)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
     }
+
+    @Override
+    public Long getClientIdByUsername(String username) {
+        return vetUserRepository.getClientIdByUsername(username);
+    }
 }
 

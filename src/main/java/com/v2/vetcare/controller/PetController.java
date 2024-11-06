@@ -41,6 +41,7 @@ public class PetController {
         }
     }
 
+    @CrossOrigin("http://localhost:63342/")
     @GetMapping("/client/{clientId}/pets")
     public ResponseEntity<ApiResponse> getAllPetsByClient(@PathVariable Long clientId){
         try {
