@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface PetRepository extends JpaRepository<Pet,Long> {
-     boolean existsByClient(Client client);
+     boolean existsByClientAndName(Client client, String name);
 
      List<Pet> findByClient(Client client);
 }

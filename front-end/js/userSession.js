@@ -18,7 +18,7 @@ class UserSession {
     getClientId() {
         return this.isClientLoggedIn() ? this.clientData.id : null;
     }
-    
+
     getClientName(){
         return this.isClientLoggedIn() ? this.clientData.name : null;
     }

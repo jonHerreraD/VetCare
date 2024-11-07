@@ -36,14 +36,14 @@ let renderPets = (pets) => {
     pets.forEach(pet => {
         let HTMLCard = `
             <div class="card mb-3" style="width: 50rem; margin-bottom: 20px;">
-                <h5 class="card-header">${pet.name}</h5>
+                <h5 class="card-header"><strong>${pet.name}</strong></h5>
                 <div class="card-body">
-                    <p class="card-text">Specie: ${pet.specie}</p>
-                    <p class="card-text">Breed: ${pet.breed}</p>
-                    <p class="card-text">Sex: ${pet.sex}</p>
-                    <p class="card-text">Age: ${pet.age}</p>
-                    <p class="card-text">Weight: ${pet.weight}</p>
-                    <p class="card-text">Characteristics: ${pet.characteristics}</p>
+                    <p class="card-text"><strong>Specie:</strong> ${pet.specie} <br>
+                                         <strong>Breed:</strong> ${pet.breed} <br>
+                                         <strong>Sex:</strong> ${pet.sex} <br>
+                                         <strong>Age:</strong> ${pet.age} <br>
+                                         <strong>Weight:</strong> ${pet.weight}</p> 
+                    <p class="card-text"><strong>Characteristics:</strong> ${pet.characteristics}</p>
                     <a href="#" class="btn btn-primary">Editar</a>
                     <a href="#" class="btn btn-danger">Eliminar</a>
                 </div>

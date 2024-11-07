@@ -53,8 +53,11 @@ public class PetController {
         }
     }
 
+    @CrossOrigin("http://localhost:63342/")
     @PostMapping("/addPet")
     public ResponseEntity<ApiResponse> addPet(@RequestBody AddPetRequest request){
+        System.out.println("Solicitud recibida: " + request.toString());
+        System.out.println("Solicitud recibida: " + request.getPet()    );
         try {
             Client client = clientService.getClientById(request.getClient_id());
             Pet pet = petService.createPet(request.getPet(),client);

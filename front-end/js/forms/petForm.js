@@ -1,15 +1,16 @@
 const userSession = new UserSession();
 
+const clientId = userSession.getClientId();
+
 let bttn = document.getElementById('registerBttn');
 
 bttn.addEventListener("click", event =>{
     addPet();
 });
 
-
+console.log(clientId);
 
 let addPet = async ()=>{
-    let user = userSession.getUserFromStorage();
     let petForm = {};
 
     petForm.name = document.getElementById('fname').value;
@@ -19,7 +20,7 @@ let addPet = async ()=>{
     petForm.breed = document.getElementById('fbreed').value;
     petForm.weight = document.getElementById('fweight').value;
     petForm.characteristics = document.getElementById('fcharacteristics').value;
-    petForm.clientId = user.getUserId();
+    petForm.clientId = clientId;
 
     const sexOptions = {
         1: 'Macho',
@@ -59,7 +60,7 @@ try {
             age: petForm.age,
             weight: petForm.weight,
         },
-        clientId: petForm.clientId
+        client_id: petForm.clientId
     };
 
     console.log(loadPet);
@@ -77,6 +78,7 @@ try {
     if (addPetRequest.ok) {
         console.log("Mascota registrada con éxito");
         // Redireccionar o actualizar la interfaz de usuario
+        window.location.replace('http://localhost:63342/vetcare/front-end/html/client/pets.html');
     } else {
         const error = await addPetRequest.text();
         console.log('Error al registrar la mascota: ' + error);
@@ -84,4 +86,4 @@ try {
 } catch (error) {
     console.error('Error en la solicitud:', error);
 }
-}
+};
