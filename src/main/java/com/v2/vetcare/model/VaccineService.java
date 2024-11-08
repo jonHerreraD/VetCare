@@ -15,24 +15,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class ClinicHistory {
+public class VaccineService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String notes;
-
-    /*
-    @OneToOne(mappedBy = "clinicHistory")
-    @JsonManagedReference
-
-     */
+    @OneToMany(mappedBy = "vaccineService")
+    @JsonManagedReference(value = "vaccineServiceReference")
+    private List<Vaccine> vaccines;
 
     @OneToOne
-    @JoinColumn(name = "pet_id")
-    @JsonBackReference(value = "petClinicHistoryReference")
-    private Pet pet;
-
-    @OneToMany(mappedBy = "clinicHistory", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Appointment> appointments;
+    @JoinColumn(name = "service_id")
+    @JsonBackReference(value = "serviceVaccineReference")
+    private Service service;
 }

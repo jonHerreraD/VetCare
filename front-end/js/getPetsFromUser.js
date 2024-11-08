@@ -44,13 +44,68 @@ let renderPets = (pets) => {
                                          <strong>Age:</strong> ${pet.age} <br>
                                          <strong>Weight:</strong> ${pet.weight}</p> 
                     <p class="card-text"><strong>Characteristics:</strong> ${pet.characteristics}</p>
-                    <a href="#" class="btn btn-primary">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <a href="#" class="btn btn-primary" onclick="editPet(${pet.id})">Editar</a>
+                    <a href="#" class="btn btn-danger" onclick="deletePet(${pet.id})">Eliminar</a>
                 </div>
             </div>
         `;
         cardContainer.innerHTML += HTMLCard;
     });
+
+
+// Agrega event listeners a los botones de editar y eliminar
+document.querySelectorAll('.edit-btn').forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const petId = event.target.getAttribute('data-id');
+        editPet(petId); // Llama a la función de edición con el id de la mascota
+    });
+});
+
+document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const petId = event.target.getAttribute('data-id');
+        deletePet(petId); // Llama a la función de eliminación con el id de la mascota
+    });
+});
+
+};
+
+
+// Función para editar una mascota específica
+let editPet = (petId) => {
+    console.log(`Editar mascota con ID: ${petId}`);
+    // Aquí podrías redirigir a una página de edición o mostrar un formulario de edición
+    // usando el petId para recuperar los datos de la mascota.
+};
+
+// Función para eliminar una mascota específica
+let deletePet = async (petId) => {
+    const isConfirmed = confirm("¿Está seguro de que desea eliminar esta mascota?");
+
+    if (!isConfirmed) {
+        return; // Si el usuario cancela, no se ejecuta la eliminación
+    }
+    try {
+        const response = await fetch(`http://localhost:8080/api/v2/pets/delete/${petId}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error al eliminar la mascota: ${response.status}`);
+        }
+
+        // Si la eliminación fue exitosa, actualiza la lista de mascotas
+        console.log(`Mascota con ID ${petId} eliminada correctamente.`);
+        petList(); // Vuelve a cargar la lista de mascotas
+    } catch (error) {
+        console.error('Hubo un problema al intentar eliminar la mascota:', error);
+    }
 };
 
 // Llamar a la función para obtener y renderizar la lista de mascotas

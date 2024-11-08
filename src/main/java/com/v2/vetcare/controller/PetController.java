@@ -18,7 +18,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v2/pets")
+@RequestMapping("${api.prefix}/pets")
 public class PetController {
 
     private final IPetService petService;
@@ -57,7 +57,7 @@ public class PetController {
     @PostMapping("/addPet")
     public ResponseEntity<ApiResponse> addPet(@RequestBody AddPetRequest request){
         System.out.println("Solicitud recibida: " + request.toString());
-        System.out.println("Solicitud recibida: " + request.getPet()    );
+        System.out.println("Solicitud recibida: " + request.getPet());
         try {
             Client client = clientService.getClientById(request.getClient_id());
             Pet pet = petService.createPet(request.getPet(),client);
@@ -77,8 +77,9 @@ public class PetController {
         }
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<ApiResponse> deletePet(@RequestBody Long id){
+    @CrossOrigin("http://localhost:63342/")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ApiResponse> deletePet(@PathVariable Long id){
         try {
             petService.deletePet(id);
             return  ResponseEntity.ok(new ApiResponse("Pet deleted!", id));

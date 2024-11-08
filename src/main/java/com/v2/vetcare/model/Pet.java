@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,10 +31,21 @@ public class Pet {
     @JsonBackReference(value = "clientPetReference")
     private Client client;
 
+    /*
     @OneToOne
     @JoinColumn(name = "pet_id", referencedColumnName = "id")
     @JsonBackReference
+     */
+
+
+    @OneToOne(mappedBy = "pet")
+    @JsonManagedReference(value = "petClinicHistoryReference")
     private ClinicHistory clinicHistory;
+
+
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Appointment> appointments;
+
 
     public Pet(String name, String specie, String breed, String sex,
                String characteristics, int age, float weight, Client client) {

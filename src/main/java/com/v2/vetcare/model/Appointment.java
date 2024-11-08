@@ -27,6 +27,13 @@ public class Appointment {
     @JoinColumn(name = "client_id")
     private Client client;
 
+
+    @ManyToOne
+    @JoinColumn(name = "pet_id")
+    private Pet pet;
+
+
+
     @ManyToOne
     @JoinColumn(name = "clinicHistory_id")
     private ClinicHistory clinicHistory;
