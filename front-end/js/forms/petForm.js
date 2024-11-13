@@ -1,18 +1,26 @@
 const userSession = new UserSession();
-
 const clientId = userSession.getClientId();
 
-let bttn = document.getElementById('registerBttn');
+const petName = {
+    setPetName: function(name) {
+        this.name = name;
+    }
+};
 
-bttn.addEventListener("click", event =>{
-    addPet();
+let petData = {};
+let petId = 0;
+
+let bttn = document.getElementById('registerBttn');
+bttn.addEventListener("click", async  event => {
+    await addPet();
+    await findPetData();
+    await createClinicHistory();
 });
 
-console.log(clientId);
-
-let addPet = async ()=>{
+let addPet = async () => {
     let petForm = {};
 
+    // Obtener los valores del formulario
     petForm.name = document.getElementById('fname').value;
     petForm.sex = document.getElementById('fsex').value;
     petForm.specie = document.getElementById('fspecie').value;
@@ -22,36 +30,25 @@ let addPet = async ()=>{
     petForm.characteristics = document.getElementById('fcharacteristics').value;
     petForm.clientId = clientId;
 
+    // Opciones para el sexo
     const sexOptions = {
         1: 'Macho',
         2: 'Hembra'
     };
-    
-    //petForm.sex = sexOptions[petForm.sex] || alert("Debes llenar todos los campos");
-    
-    // Validar y asignar el valor de sexo
     petForm.sex = sexOptions[petForm.sex];
-    if (!petForm.sex) {
-        alert("Debes seleccionar el sexo");
-        return; // Detener ejecución si el sexo no es válido
-    }
 
-    // Función para validar que todos los campos estén completos
+    // Validación de campos
     function areAllFieldsFilled(form) {
         return Object.values(form).every(value => value !== null && value !== '');
     }
-
-    // Verificar campos antes de enviar
     if (!areAllFieldsFilled(petForm)) {
         alert("Debes llenar todos los campos");
-        return; // Detener ejecución si algún campo está vacío
-    }  
-    
-    // Realizar la solicitud al backend solo si todos los campos están llenos
-try {
+        return;
+    }
 
+    // Cargar datos de la mascota
     const loadPet = {
-        pet:{
+        pet: {
             name: petForm.name,
             specie: petForm.specie,
             breed: petForm.breed,
@@ -63,27 +60,84 @@ try {
         client_id: petForm.clientId
     };
 
-    console.log(loadPet);
+    try {
+        // Enviar solicitud para registrar la mascota
+        const addPetRequest = await fetch('http://localhost:8080/api/v2/pets/addPet', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loadPet)
+        });
 
-    const addPetRequest = await fetch('http://localhost:8080/api/v2/pets/addPet',{
+        if (addPetRequest.ok) {
+            console.log("Mascota registrada con éxito");
+
+            petName.setPetName(petForm.name);
+
+        } else {
+            const error = await addPetRequest.text();
+            console.error('Error al registrar la mascota:', error);
+        }
+    } catch (error) {
+        console.error('Error en la solicitud:', error);
+    }
+};
+
+
+
+let findPetData = async () => {
+
+    console.log("El nombre de la mascota es: " + petName.name);
+
+
+    // Obtener la información de la mascota recién registrada
+    const getPetData = await fetch(`http://localhost:8080/api/v2/pets/pet/${petName.name}/client/${clientId}`, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+
+    petData = await getPetData.json();
+    petId = petData.data?.id;  // Obtén el ID de la mascota
+
+    console.log("Pet id " + petId);
+};
+
+/*
+let createClinicHistory = async () => {
+
+
+    // Crear el historial clínico
+    const loadClinicHistory = {
+        clinicHistory: {
+            name: `${petName.name} Health Record`,
+            notes: "",
+        },
+        pet_id: petId
+    };
+
+    console.log("Datos a enviar para el historial clínico:", JSON.stringify(loadClinicHistory));
+
+    // Enviar solicitud para registrar el historial clínico
+    const addClinicHistoryRequest = await fetch('http://localhost:8080/api/v2/healthRecords/add', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-
-        body: JSON.stringify(loadPet)
+        body: JSON.stringify(loadClinicHistory)
     });
 
-    if (addPetRequest.ok) {
-        console.log("Mascota registrada con éxito");
+    if (addClinicHistoryRequest.ok) {
         // Redireccionar o actualizar la interfaz de usuario
         window.location.replace('http://localhost:63342/vetcare/front-end/html/client/pets.html');
     } else {
-        const error = await addPetRequest.text();
-        console.log('Error al registrar la mascota: ' + error);
+        console.error('Error al registrar el historial clínico.');
     }
-} catch (error) {
-    console.error('Error en la solicitud:', error);
-}
 };
+
+ */

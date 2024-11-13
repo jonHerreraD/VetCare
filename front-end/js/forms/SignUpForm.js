@@ -43,7 +43,7 @@ let signUp = async () => {
                     role: vetUserForm.role
                 },
                 client_id: clientId,
-                employee_id: 2
+                employee_id: null
             };
 
             console.log("Cargando usuario:", loadUser);

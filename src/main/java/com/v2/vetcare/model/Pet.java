@@ -38,7 +38,7 @@ public class Pet {
      */
 
 
-    @OneToOne(mappedBy = "pet")
+    @OneToOne(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "petClinicHistoryReference")
     private ClinicHistory clinicHistory;
 

@@ -35,17 +35,30 @@ let renderPets = (pets) => {
     }
     pets.forEach(pet => {
         let HTMLCard = `
-            <div class="card mb-3" style="width: 50rem; margin-bottom: 20px;">
-                <h5 class="card-header"><strong>${pet.name}</strong></h5>
-                <div class="card-body">
-                    <p class="card-text"><strong>Specie:</strong> ${pet.specie} <br>
-                                         <strong>Breed:</strong> ${pet.breed} <br>
-                                         <strong>Sex:</strong> ${pet.sex} <br>
-                                         <strong>Age:</strong> ${pet.age} <br>
-                                         <strong>Weight:</strong> ${pet.weight}</p> 
-                    <p class="card-text"><strong>Characteristics:</strong> ${pet.characteristics}</p>
-                    <a href="#" class="btn btn-primary" onclick="editPet(${pet.id})">Editar</a>
-                    <a href="#" class="btn btn-danger" onclick="deletePet(${pet.id})">Eliminar</a>
+            <div class="card mb-3" style="width: 35rem; border-radius: 8px; overflow: hidden;">
+                <h5 class="card-header bg-primary text-white text-center" style="font-size: 1.3rem; padding: 8px;">
+                    <strong>${pet.name}</strong>
+                </h5>
+                <div class="card-body" style="padding: 10px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <div  style="flex: 1; margin-right: 5px;">
+                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Especie:</strong> ${pet.specie}</p>
+                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Raza:</strong> ${pet.breed}</p>
+                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Sexo:</strong> ${pet.sex}</p>
+                        </div>
+                        <div style="flex: 1;">
+                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Edad:</strong> ${pet.age}</p>
+                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Peso:</strong> ${pet.weight}</p>
+                        </div>
+                    </div>
+                    <hr style="margin: 5px 0;">
+                    <p class="card-text mb-2" style="font-size: 0.85rem; line-height: 1.2;">
+                        <strong>Características:</strong> ${pet.characteristics.length > 50 ? pet.characteristics.substring(0, 50) + '...' : pet.characteristics}
+                    </p>
+                    <div class="d-flex justify-content-center mt-1">
+                        <button class="btn btn-primary btn-sm mx-1" onclick="editPet(${pet.id})">Editar</button>
+                        <button class="btn btn-danger btn-sm mx-1" onclick="deletePet(${pet.id})">Eliminar</button>
+                    </div>
                 </div>
             </div>
         `;
@@ -76,7 +89,9 @@ document.querySelectorAll('.delete-btn').forEach(button => {
 // Función para editar una mascota específica
 let editPet = (petId) => {
     console.log(`Editar mascota con ID: ${petId}`);
+    localStorage.setItem('petId',petId);
     // Aquí podrías redirigir a una página de edición o mostrar un formulario de edición
+    window.location.replace("http://localhost:63342/vetcare/front-end/html/client/updatePet.html?_ijt=9qir044svnagrt746tvdvur6ec&_ij_reload=RELOAD_ON_SAVE");
     // usando el petId para recuperar los datos de la mascota.
 };
 

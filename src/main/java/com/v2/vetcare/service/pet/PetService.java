@@ -35,6 +35,11 @@ public class PetService implements IPetService{
     }
 
     @Override
+    public Pet getPetByNameAndClient_Id(String name, Long clientId) {
+        return petRepository.getPetByNameAndClient_Id(name,clientId);
+    }
+
+    @Override
     public void deletePet(Long id) {
         petRepository.findById(id)
                 .ifPresentOrElse(petRepository::delete,

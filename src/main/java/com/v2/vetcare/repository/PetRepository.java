@@ -12,4 +12,6 @@ public interface PetRepository extends JpaRepository<Pet,Long> {
      boolean existsByClientAndName(Client client, String name);
 
      List<Pet> findByClient(Client client);
+
+     Pet getPetByNameAndClient_Id(String name, Long clientId);
 }

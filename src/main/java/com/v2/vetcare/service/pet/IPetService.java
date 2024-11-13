@@ -12,6 +12,8 @@ import java.util.List;
 public interface IPetService {
     Pet createPet(Pet pet, Client client);
     Pet getPetById(Long id);
+
+    Pet getPetByNameAndClient_Id(String name, Long clientId);
     void deletePet(Long id);
     Pet updatePet(UpdatePetRequest request);
 

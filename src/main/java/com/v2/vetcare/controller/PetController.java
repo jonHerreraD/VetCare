@@ -42,6 +42,17 @@ public class PetController {
     }
 
     @CrossOrigin("http://localhost:63342/")
+    @GetMapping("/pet/{name}/client/{clientId}")
+    public ResponseEntity<ApiResponse> getPetByNameAndClient_Id(@PathVariable String name, @PathVariable Long clientId){
+        try {
+            Pet pet = petService.getPetByNameAndClient_Id(name,clientId);
+            return ResponseEntity.ok(new ApiResponse("Exito!",pet));
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(),null));
+        }
+    }
+
+    @CrossOrigin("http://localhost:63342/")
     @GetMapping("/client/{clientId}/pets")
     public ResponseEntity<ApiResponse> getAllPetsByClient(@PathVariable Long clientId){
         try {
