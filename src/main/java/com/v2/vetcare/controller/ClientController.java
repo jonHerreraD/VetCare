@@ -29,6 +29,7 @@ public class ClientController {
     }
 
 
+    @CrossOrigin("http://localhost:63342/")
     @GetMapping("/client/{id}/clients")
     public ResponseEntity<ApiResponse> getClientById(@PathVariable Long id){
         try {

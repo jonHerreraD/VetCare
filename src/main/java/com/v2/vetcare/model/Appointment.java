@@ -1,5 +1,6 @@
 package com.v2.vetcare.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,18 +24,19 @@ public class Appointment {
     private LocalTime hour;
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
-
 
     @ManyToOne
     @JoinColumn(name = "pet_id")
+    @JsonBackReference(value = "petAppointmentReference")
     private Pet pet;
 
-
+    @OneToOne
+    @JoinColumn(name = "vetService_id")
+    @JsonBackReference(value = "serviceAppointmentReference")
+    private VetService vetService;
 
     @ManyToOne
-    @JoinColumn(name = "clinicHistory_id")
-    private ClinicHistory clinicHistory;
+    @JoinColumn(name = "healthRecord_id")
+    @JsonBackReference(value = "healthRecordAppointmentReference")
+    private HealthRecord healthRecord;
 }

@@ -21,7 +21,7 @@ public class PensionService {
     private double totalPrice;
 
     @OneToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "vetService_id")
     @JsonBackReference(value = "servicePensionReference")
-    private Service service;
+    private VetService vetService;
 }

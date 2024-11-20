@@ -22,7 +22,7 @@ public class GroomingService {
     private double price;
 
     @OneToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "vetService_id")
     @JsonBackReference(value = "serviceGroomingReference")
-    private Service service;
+    private VetService vetService;
 }

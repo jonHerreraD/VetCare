@@ -20,7 +20,7 @@ public class EuthanasiaService {
     private double price;
 
     @OneToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "vetService_id")
     @JsonBackReference(value = "serviceEuthanasiaReference")
-    private Service service;
+    private VetService vetService;
 }

@@ -14,7 +14,6 @@ let bttn = document.getElementById('registerBttn');
 bttn.addEventListener("click", async  event => {
     await addPet();
     await findPetData();
-    await createClinicHistory();
 });
 
 let addPet = async () => {

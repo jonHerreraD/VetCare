@@ -35,13 +35,13 @@ let renderPets = async (pets) => {
 
     for (const pet of pets) {
         // Realizar una solicitud para obtener el historial clínico de cada mascota
-        let hasClinicHistory = false;
+        let hasHealthRecord = false;
 
         try {
             const response = await fetch(`http://localhost:8080/api/v2/healthRecords/pet/${pet.id}`);
             if (response.ok) {
-                const clinicHistory = await response.json();
-                hasClinicHistory = clinicHistory !== null && clinicHistory.data; // Asume que 'data' contiene el historial
+                const healthRecord = await response.json();
+                hasHealthRecord = healthRecord !== null && healthRecord.data; // Asume que 'data' contiene el historial
             }
         } catch (error) {
             console.error(`Error al verificar historial clínico para la mascota ${pet.name}:`, error);
@@ -53,7 +53,7 @@ let renderPets = async (pets) => {
     <div class="card mb-3" style="width: 50rem; margin-bottom: 20px;">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0"><strong>${pet.name}</strong></h5>
-            ${hasClinicHistory ? `
+            ${hasHealthRecord ? `
                 <a href="#" class="btn btn-primary ms-auto" onclick="viewPetRecord(${pet.id})">Ver Historial Clinico</a>
             ` : `
                 <a href="#" class="btn btn-secondary ms-auto" onclick="createPetRecord(${pet.id},'${pet.name}')">Crear Historial Clinico</a>
@@ -94,27 +94,27 @@ let createPetRecord = async (petId,petName) => {
     console.log(`Crear historial de mascota con ID: ${petId}`);
     localStorage.setItem('petId',petId);
 
-    const loadClinicHistory = {
-        clinicHistory: {
+    const loadHealthRecord = {
+        healthRecord: {
             name: `${petName} Historial Clinico`,
             notes: "",
         },
         pet_id: petId
     };
 
-    console.log("Datos a enviar para el historial clínico:", JSON.stringify(loadClinicHistory));
+    console.log("Datos a enviar para el historial clínico:", JSON.stringify(loadHealthRecord));
 
     // Enviar solicitud para registrar el historial clínico
-    const addClinicHistoryRequest = await fetch('http://localhost:8080/api/v2/healthRecords/add', {
+    const addHealthRecordRequest = await fetch('http://localhost:8080/api/v2/healthRecords/add', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(loadClinicHistory)
+        body: JSON.stringify(loadHealthRecord)
     });
 
-    if (addClinicHistoryRequest.ok) {
+    if (addHealthRecordRequest.ok) {
         // Aquí podrías redirigir a una página de edición o mostrar un formulario de edición
         window.location.replace("http://localhost:63342/vetcare/front-end/html/client/petClinicHistory.html?_ijt=qr7n9j243keptu0v33dg6ue3bu&_ij_reload=RELOAD_ON_SAVE");
         // usando el petId para recuperar los datos de la mascota.

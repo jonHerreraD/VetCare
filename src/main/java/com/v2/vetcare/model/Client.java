@@ -31,9 +31,12 @@ public class Client {
     @JsonManagedReference(value = "clientPetReference")
     private List<Pet> pets;
 
+    /*
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Appointment> appointments;
 
+
+     */
     @OneToOne(mappedBy = "client")
     @JsonManagedReference(value = "clientReference")
     private VetUser vetUser;

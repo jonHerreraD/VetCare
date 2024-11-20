@@ -25,7 +25,7 @@ public class VaccineService {
     private List<Vaccine> vaccines;
 
     @OneToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "vetService_id")
     @JsonBackReference(value = "serviceVaccineReference")
-    private Service service;
+    private VetService vetService;
 }

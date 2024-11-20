@@ -30,8 +30,8 @@ public class ConsultationService {
     private double price;
 
     @OneToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "vetService_id")
     @JsonBackReference(value = "serviceConsultationReference")
-    private Service service;
+    private VetService vetService;
 
 }

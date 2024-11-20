@@ -39,11 +39,12 @@ public class Pet {
 
 
     @OneToOne(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference(value = "petClinicHistoryReference")
-    private ClinicHistory clinicHistory;
+    @JsonManagedReference(value = "petHealthRecordReference")
+    private HealthRecord healthRecord;
 
 
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "petAppointmentReference")
     private List<Appointment> appointments;
 
 

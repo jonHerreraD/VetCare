@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class ClinicHistory {
+public class HealthRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,9 +30,10 @@ public class ClinicHistory {
 
     @OneToOne
     @JoinColumn(name = "pet_id")
-    @JsonBackReference(value = "petClinicHistoryReference")
+    @JsonBackReference(value = "petHealthRecordReference")
     private Pet pet;
 
-    @OneToMany(mappedBy = "clinicHistory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "healthRecord", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "healthRecordAppointmentReference")
     private List<Appointment> appointments;
 }
