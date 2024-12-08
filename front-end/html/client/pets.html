@@ -13,6 +13,65 @@
   <link rel="stylesheet" href="../../css/cardsStyls.css">
   <link rel="stylesheet" href="../../css/servicesStyls.css">
 
+  <style>
+    body {
+      background-color: #f4f6f9;
+      font-family: 'Arial', sans-serif;
+    }
+    .main-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .page-title {
+      color: #333;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    #card-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .custom-card {
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .custom-card:hover {
+      transform: scale(1.02);
+    }
+    .card-header {
+      background-color: #4a90e2;
+      color: white;
+      font-weight: 600;
+    }
+    .card-img-container {
+      height: 250px;
+      overflow: hidden;
+    }
+    .card-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .add-pet-btn {
+      background-color: #4a90e2;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+    }
+    .add-pet-btn:hover {
+      background-color: #357abd;
+    }
+    .pet-details {
+      background-color: #f8f9fa;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -74,39 +133,60 @@
         </a>
       </div>
     </aside>
-    <div class="main" >
+    <div class="main-container">
       <div class="text-center">
-        <h1>Mascotas de Jonathan</h1>
+        <h1 class="page-title">Mascotas de Jonathan</h1>
         <div id="card-container">
-          <div class="card" style="width: 50rem;">
-            <h5 class="card-header">Featured</h5>
-            <div class="card-body ">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="card custom-card">
+            <div class="card-img-container">
+              <img src="../../img/el-celo-en-los-gatos-1.png" alt="Mascota 1">
+            </div>
+            <div class="card-header">
+              Mascota Favorita
+            </div>
+            <div class="card-body pet-details">
+              <h5 class="card-title">Firulais</h5>
+              <p class="card-text">Un adorable perro golden retriever que ama jugar y hacer travesuras. Siempre está lleno de energía y es el mejor compañero.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-primary">Perro</span>
+                <a href="#" class="btn btn-outline-primary">Ver Detalles</a>
+              </div>
             </div>
           </div>
-          <div class="card" style="width: 50rem;">
-            <h5 class="card-header">Featured</h5>
-            <div class="card-body ">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+
+          <div class="card custom-card">
+            <div class="card-img-container">
+              <img src="/api/placeholder/1000/250?text=Mascota+2" alt="Mascota 2">
+            </div>
+            <div class="card-header">
+              Nuevo Miembro
+            </div>
+            <div class="card-body pet-details">
+              <h5 class="card-title">Misifu</h5>
+              <p class="card-text">Una gatita siamesa muy curiosa y juguetona. Le encanta dormir en lugares altos y observar todo lo que sucede a su alrededor.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-secondary">Gato</span>
+                <a href="#" class="btn btn-outline-primary">Ver Detalles</a>
+              </div>
             </div>
           </div>
         </div>
-        
-      </div>
-      <div class="add-pet bttn d-grid gap-2 col-3 mx-auto mt-3" >
-        <a href="AddPet.html"><button id="signUpBttn" type="button" class="btn btn-primary mb-5">Agregar Mascota</button></a>
+
+        <div class="add-pet bttn d-grid gap-2 col-6 col-md-3 mx-auto mt-4">
+          <a href="AddPet.html">
+            <button id="signUpBttn" type="button" class="btn btn-primary add-pet-btn w-100">
+              Agregar Mascota
+            </button>
+          </a>
+        </div>
       </div>
     </div>
 
-  </div>
-  <script src="../../js/sidebarFunction.js"></script>
+    <script src="../../js/sidebarFunction.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../js/userSession.js"></script>
   <script src="../../js/getPetsFromUser.js"></script>
+  </div>
 </body>
 
 </html>

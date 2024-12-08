@@ -35,9 +35,10 @@ let renderClient = (client) => {
         let HTMLCard = `
             <div class="card mb-3" style="width: 35rem; border-radius: 8px; overflow: hidden;">
                 <h5 class="card-header bg-primary text-white text-center" style="font-size: 1.3rem; padding: 8px;">
-                    <strong>Perfil</strong>
+                    <strong>Informacion de Perfil</strong>
                 </h5>
                 <div class="card-body" style="padding: 10px;">
+                <h5 class="card-title">Detalles Personales</h5>
                     <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                         <div  style="flex: 1; margin-right: 5px;">
                             <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Nombre:</strong> ${client.name}</p>

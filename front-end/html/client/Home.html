@@ -66,36 +66,137 @@
   </ul>
   <div class="sidebar-footer">
     <a href="" class="sidebar-link">
-      <i class="lni lni-exit"></i>
+      <i id="logout" class="lni lni-exit"></i>
       <span>Cerrar Sesion</span>
     </a>
   </div>
 </aside>
   <div class="main" id="body-content">
     <div class="text-center">
-      <h1>Sidebar</h1>
-      <div class="card" style="width: 50rem;">
-        <h5 class="card-header">Featured</h5>
-        <div class="card-body ">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+      <main class="main-content">
+        <div class="container-fluid">
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="welcome-header">
+                <h1 class="mb-1">Bienvenido, Carlos</h1>
+                <p class="mb-0 text-white-50">Aquí está un resumen de la salud de tus mascotas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card dashboard-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">Próxima Cita</h5>
+                  <div class="pet-profile">
+                    <img src="../../img/Perro-con-lentes.jpg" alt="Fluffy" class="pet-avatar">
+                    <div>
+                      <h6 class="mb-1">Fluffy</h6>
+                      <p class="text-muted mb-0">Chequeo General</p>
+                      <small class="text-muted">15 Mar, 10:00 AM</small>
+                    </div>
+                  </div>
+                  <button class="quick-action-btn w-100 mt-3">Confirmar Cita</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card dashboard-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">Mis Mascotas</h5>
+                  <div class="pet-profile">
+                    <img src="../../img/Perro-con-lentes.jpg" alt="Fluffy" class="pet-avatar">
+                    <div>
+                      <h6 class="mb-1">Fluffy</h6>
+                      <p class="text-muted">Perro, 3 años</p>
+                    </div>
+                  </div>
+                  <div class="pet-profile">
+                    <img src="../../img/el-celo-en-los-gatos-1.png" alt="Whiskers" class="pet-avatar">
+                    <div>
+                      <h6 class="mb-1">Whiskers</h6>
+                      <p class="text-muted">Gato, 2 años</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card dashboard-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">Recordatorios</h5>
+                  <div class="stat-card mb-3">
+                    <h6 class="mb-2">Vacuna Pendiente</h6>
+                    <p class="text-muted mb-0">Fluffy - Vacuna Anual</p>
+                  </div>
+                  <div class="stat-card">
+                    <h6 class="mb-2">Próximo Examen</h6>
+                    <p class="text-muted mb-0">Whiskers - Chequeo Dental</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="card dashboard-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">Historial de Vacunas</h5>
+                  <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      Vacuna Antirrábica
+                      <span class="badge bg-primary rounded-pill">Completada</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      Vacuna Múltiple
+                      <span class="badge bg-primary rounded-pill">Completada</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      Próxima Vacuna
+                      <span class="badge bg-warning rounded-pill">Pendiente</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card dashboard-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-4">Servicios Recomendados</h5>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                      Chequeo Dental
+                      <span class="badge bg-secondary">Nuevo</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                      Limpieza Profunda
+                      <span class="badge bg-info">Recomendado</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                      Examen Preventivo
+                      <span class="badge bg-success">Disponible</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="card" style="width: 50rem;">
-        <h5 class="card-header">Featured</h5>
-        <div class="card-body ">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+      </main>
+
+
     </div>
-  </div>
 </div>
 <script src="../../js/sidebarFunction.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/userSession.js"></script>
 <script src="../../js/home.js"></script>
+<script src="../../js/logout.js"></script>
+</div>
 </body>
 </html>

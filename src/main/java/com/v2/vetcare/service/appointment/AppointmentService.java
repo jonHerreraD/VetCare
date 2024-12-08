@@ -34,8 +34,12 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
-    public List<Appointment> getAllAppointments() {
-        return null;
+    public List<AppointmentDTO> getAllAppointments() {
+        List<Pet> pets = petRepository.findAll();
+        List<Appointment> appointments = appointmentRepository.findAllByPets(pets);
+        return appointments.stream()
+                .map(AppointmentDTO::new)
+                .collect(Collectors.toList());
     }
 
     @Override

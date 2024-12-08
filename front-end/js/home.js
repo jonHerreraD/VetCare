@@ -3,8 +3,10 @@ const userSession = new UserSession();
 
 console.log(userSession);
 
-console.log(userSession.getClientId());  // Muestra el ID del cliente
+console.log(userSession.getUserId());  // Muestra el ID del cliente
 console.log(userSession.getUserName());  // Muestra el nombre de usuario del cliente
+console.log(userSession.getEmployeeId());
+console.log(userSession.getEmployeeName());
 
 
 

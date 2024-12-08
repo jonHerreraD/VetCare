@@ -50,14 +50,33 @@ let renderPets = async (pets) => {
 
         // Construir la tarjeta según si tiene historial clínico o no
         let HTMLCard = `
-    <div class="card mb-3" style="width: 50rem; margin-bottom: 20px;">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0"><strong>${pet.name}</strong></h5>
+    <div class="card shadow-sm rounded-3 border-0" style="width: 50rem; margin-bottom: 20px; background-color: rgba(248,249,250,0.45);">
+        <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #e5bc0b; color: white; padding: 15px;">
+            <h5 class="mb-0 d-flex align-items-center">
+                <i class="fas fa-paw me-2" style="font-size: 1.2rem;"></i>
+                <strong>${pet.name}</strong>
+            </h5>
             ${hasHealthRecord ? `
-                <a href="#" class="btn btn-primary ms-auto" onclick="viewPetRecord(${pet.id})">Ver Historial Clinico</a>
+                <a href="#" class="btn btn-light text-primary ms-auto d-flex align-items-center" onclick="viewPetRecord(${pet.id})">
+                    <i class="fas fa-notes-medical me-2"></i>
+                    Ver Historial Clínico
+                </a>
             ` : `
-                <a href="#" class="btn btn-secondary ms-auto" onclick="createPetRecord(${pet.id},'${pet.name}')">Crear Historial Clinico</a>
+                <a href="#" class="btn btn-outline-light ms-auto d-flex align-items-center" onclick="createPetRecord(${pet.id},'${pet.name}')">
+                    <i class="fas fa-plus-circle me-2"></i>
+                    Crear Historial Clínico
+                </a>
             `}
+        </div>
+        <div class="card-body p-3">
+            <div class="row">
+                <div class="col-12">
+                    <small class="text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        ${hasHealthRecord ? 'Historial médico disponible' : 'Historial médico pendiente'}
+                    </small>
+                </div>
+            </div>
         </div>
     </div>
 `;

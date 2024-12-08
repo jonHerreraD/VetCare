@@ -35,33 +35,45 @@ let renderPets = (pets) => {
     }
     pets.forEach(pet => {
         let HTMLCard = `
-            <div class="card mb-3" style="width: 35rem; border-radius: 8px; overflow: hidden;">
-                <h5 class="card-header bg-primary text-white text-center" style="font-size: 1.3rem; padding: 8px;">
-                    <strong>${pet.name}</strong>
-                </h5>
-                <div class="card-body" style="padding: 10px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <div  style="flex: 1; margin-right: 5px;">
-                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Especie:</strong> ${pet.specie}</p>
-                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Raza:</strong> ${pet.breed}</p>
-                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Sexo:</strong> ${pet.sex}</p>
-                        </div>
-                        <div style="flex: 1;">
-                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Edad:</strong> ${pet.age}</p>
-                            <p class="card-text mb-1" style="font-size: 0.9rem;"><strong>Peso:</strong> ${pet.weight}</p>
-                        </div>
-                    </div>
-                    <hr style="margin: 5px 0;">
-                    <p class="card-text mb-2" style="font-size: 0.85rem; line-height: 1.2;">
-                        <strong>Características:</strong> ${pet.characteristics.length > 50 ? pet.characteristics.substring(0, 50) + '...' : pet.characteristics}
-                    </p>
-                    <div class="d-flex justify-content-center mt-1">
-                        <button class="btn btn-primary btn-sm mx-1" onclick="editPet(${pet.id})">Editar</button>
-                        <button class="btn btn-danger btn-sm mx-1" onclick="deletePet(${pet.id})">Eliminar</button>
-                    </div>
+    <div class="card custom-card mb-3" style="width: 35rem;">
+        <div class="card-img-container">
+            <img src="../../img/Perro-con-lentes.jpg" alt="">
+        </div>
+        <div class="card-header">
+            <strong>${pet.name}</strong>
+        </div>
+        <div class="card-body pet-details">
+            <div class="row mb-3">
+                <div class="col-6">
+                    <p class="card-text mb-1"><strong>Especie:</strong> ${pet.specie}</p>
+                    <p class="card-text mb-1"><strong>Raza:</strong> ${pet.breed}</p>
+                    <p class="card-text mb-1"><strong>Sexo:</strong> ${pet.sex}</p>
+                </div>
+                <div class="col-6">
+                    <p class="card-text mb-1"><strong>Edad:</strong> ${pet.age}</p>
+                    <p class="card-text mb-1"><strong>Peso:</strong> ${pet.weight}</p>
                 </div>
             </div>
-        `;
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="badge ${
+            pet.specie.toLowerCase() === 'perro' ? 'bg-primary' :
+                pet.specie.toLowerCase() === 'gato' ? 'bg-secondary' :
+                    'bg-info'
+        }">
+                    ${pet.specie}
+                </span>
+                <div>
+                    <button class="btn btn-sm btn-outline-primary me-2" onclick="editPet(${pet.id})">Editar</button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deletePet(${pet.id})">Eliminar</button>
+                </div>
+            </div>
+            <hr class="my-3">
+            <p class="card-text text-muted" style="font-size: 0.9rem;">
+                <strong>Características:</strong> ${pet.characteristics.length > 100 ? pet.characteristics.substring(0, 100) + '...' : pet.characteristics}
+            </p>
+        </div>
+    </div>
+`;
         cardContainer.innerHTML += HTMLCard;
     });
 

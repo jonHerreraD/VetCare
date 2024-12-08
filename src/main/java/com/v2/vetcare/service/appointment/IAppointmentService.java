@@ -12,7 +12,7 @@ public interface IAppointmentService {
     Appointment addAppointment(Appointment appointment, Pet pet,
                                HealthRecord healthRecord, VetService vetService);
 
-    List<Appointment> getAllAppointments();
+    List<AppointmentDTO> getAllAppointments();
 
     Appointment getAppointmentById(Long id);
 

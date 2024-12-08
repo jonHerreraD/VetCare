@@ -22,6 +22,7 @@ public class ClientController {
 
     private final IClientService clientService;
 
+    @CrossOrigin("http://localhost:63342/")
     @GetMapping("/all")
     public ResponseEntity<ApiResponse> getAllClients(){
         List<Client> clients = clientService.getAllClients();

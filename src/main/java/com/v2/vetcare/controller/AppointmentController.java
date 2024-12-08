@@ -28,9 +28,10 @@ public class AppointmentController {
     private final IVetServiceService vetServiceService;
     private final IClientService clientService;
 
+    @CrossOrigin("http://localhost:63342/")
     @GetMapping("/all")
     public ResponseEntity<ApiResponse> getAllAppointments(){
-        List<Appointment> appointments = appointmentService.getAllAppointments();
+        List<AppointmentDTO> appointments = appointmentService.getAllAppointments();
         return ResponseEntity.ok(new ApiResponse("Success",appointments));
     }
 

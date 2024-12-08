@@ -11,6 +11,44 @@
     <link rel="stylesheet" href="../../css/sidebarStyls.css">
     <link rel="stylesheet" href="../../css/LogInStyls.css">
     <link rel="stylesheet" href="../../css/servicesStyls.css">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+        .table-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(0,123,255,0.075);
+            transition: background-color 0.3s ease;
+        }
+        .employees-title {
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .action-buttons .btn {
+            margin-right: 5px;
+        }
+        .role-badge {
+            font-size: 0.8em;
+            padding: 0.3em 0.6em;
+        }
+        .table > :not(caption) > * > * {
+            padding: 12px 15px;
+        }
+        .btn-register {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.1em;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -95,85 +133,91 @@
                 </a>
             </div>
         </aside>
-        <div class="main" id="body-content">
-            <div class="text-center">
-                <h1 class="fs-2">Clientes</h1>
-                <div class="d-flex justify-content-center">
+        <div  id="body-content" class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center employees-title">Clientes</h1>
 
-                </div>
-                <table class="table fs-6">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Paterno</th>
-                        <th scope="col">Materno</th>
-                        <th scope="col">Telefono</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">Direccion</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-group-divider mb-3">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Jonathan</td>
-                        <td>Herreraaaaaa</td>
-                        <td>Diazz</td>
-                        <td>Herreraaaaaa</td>
-                        <td>Diazz</td>
-                        <td>Herreraaaaaa</td>
-                        <td>Diazz</td>
-                        <td>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end button-container">
-                                <button class="btn btn-info me-md-2 text-light" type="button">Editar</button>
-                                <button class="btn btn-danger" type="button">Eliminar</button>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>Herreraaaaaa</td>
-                        <td>Diazz</td>
-                        <td>Herreraaaaaa</td>
-                        <td>Diazz</td>
-                        <td>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end button-container">
-                                <button class="btn btn-info me-md-2 text-light" type="button">Editar</button>
-                                <button class="btn btn-danger" type="button">Eliminar</button>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>Herreraaaaaa</td>
-                        <td>Diazz</td>
-                        <td>Herreraaaaaa</td>
-                        <td>Diazz</td>
-                        <td>Diazz</td>
-                        <td>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end button-container">
-                                <button class="btn btn-info me-md-2 text-light" type="button">Editar</button>
-                                <button class="btn btn-danger" type="button">Eliminar</button>
-                            </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="sg-up bttn d-grid gap-2 col-3 mx-auto">
-                    <a href="pets.html"><button id="signUpBttn" type="button"
-                            class="btn btn-primary">Registrar nuevo</button></a>
+                    <div class="table-container">
+                        <div class="table-responsive">
+                            <table id="clientsTable" class="table table-hover table-striped">
+                                <thead class="table-light">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Paterno</th>
+                                    <th scope="col">Materno</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Direccion</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Usuario</th>
+                                    <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Jonathan</td>
+                                    <td>Herrera</td>
+                                    <td>Diaz</td>
+                                    <td>555-1234</td>
+                                    <td>jonathan@example.com</td>
+                                    <td>jonathanH</td>
+                                    <td>
+                                        <span class="badge bg-success role-badge">Admin</span>
+                                    </td>
+                                    <td class="action-buttons">
+                                        <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                        <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>Smith</td>
+                                    <td>555-5678</td>
+                                    <td>jacob@example.com</td>
+                                    <td>jacobT</td>
+                                    <td>
+                                        <span class="badge bg-primary role-badge">Manager</span>
+                                    </td>
+                                    <td class="action-buttons">
+                                        <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                        <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>Bird</td>
+                                    <td>Williams</td>
+                                    <td>555-9012</td>
+                                    <td>larry@example.com</td>
+                                    <td>larryB</td>
+                                    <td>
+                                        <span class="badge bg-secondary role-badge">User</span>
+                                    </td>
+                                    <td class="action-buttons">
+                                        <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                        <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="pets.html" class="btn btn-primary btn-register">Registrar nuevo</a>
+                    </div>
                 </div>
             </div>
         </div>
         <script src="../../js/sidebarFunction.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../../js/getClients.js"></script>
+    </div>
 </body>
 
 </html>
